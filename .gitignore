@@ -1,0 +1,4 @@
+/bin
+/runs
+/.nextflow*
+/.ipynb*
