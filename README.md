@@ -20,6 +20,26 @@ Then the content of taxa.txt (the search is case sensitive):
 	Calopterygidae_Calopteryx
 	GEODE7884_Euphaeidae_Euphaea_guerini
 
+# Activate Nextflow module
+
+	module load nextflow/23.10
+
+If you want Nextflow to load automatically when you login, also run `module save`
+
+# Start your Nextflow run
+
+From your run directory:
+
+	nextflow run ../../main.nf
+
+When the pipeline finished, your tree file and all intermediate files will be in the `output` folder in your run directory.
+
+If the pipeline needs to be restarted, you can tell Nextflow to use the cached output files:
+
+	nextflow run -resume ../../main.nf
+
+# More runs
+
 To use the pipeline with another taxa sampling, simply create another run folder and `taxa.txt` file:
 
     odonata-nextflow
@@ -39,21 +59,4 @@ To use the pipeline with another taxa sampling, simply create another run folder
                 |-- tree.treefile
                 `-- ...
 
-# Activate Nextflow module
-
-	module load nextflow/23.10
-
-If you want Nextflow to load automatically when you login, also run `module save`
-
-# Start your Nextflow run
-
-From your run directory:
-
-	nextflow run ../../main.nf
-
-When the pipeline finished, your tree file and all intermediate files will be in the `output` folder in your run directory.
-
-If the pipeline needs to be restarted, you can tell Nextflow to use the cached output files:
-
-	nextflow run -resume ../../main.nf
 
