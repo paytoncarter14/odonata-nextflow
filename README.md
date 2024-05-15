@@ -39,7 +39,7 @@ If your terminal exits for any reason, the pipeline will stop. You can resume th
 
 	nextflow run -resume ../../main.nf
 
-To ensure your pipeline will not be stopped if your terminal exits, you can start a screen session and submit the Nextflow command to the Slurm cluster:
+To ensure your pipeline will not be stopped if your terminal exits, you can start a [screen](https://www.gnu.org/software/screen/) session and submit the Nextflow command to the Slurm cluster:
 
 	screen
  	srun --time=72:00:00 --mem=8G nextflow run ../../main.nf
