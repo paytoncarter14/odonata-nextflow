@@ -1,6 +1,6 @@
 # About
 
-This is currently only working only on the BYU RC cluster, with the 20kb probe sequences, starting from the filtered ortholog files (i.e. alignment is the first step).
+This is currently working only on the BYU RC cluster, with the 20kb probe sequences, starting from the filtered ortholog files (i.e. alignment is the first step).
 
 # Download
 
