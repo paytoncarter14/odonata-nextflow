@@ -3,3 +3,4 @@
 /.ipynb*
 /geode.db
 /prepare_data.nf
+/*.swp
