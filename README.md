@@ -1,6 +1,6 @@
 # About
 
-This is currently only working with the 20kb probe sequences.
+This is currently only working with the 20kb probe sequences, starting from the filtered ortholog files (i.e. alignment is the first step).
 
 # Download
 
@@ -22,6 +22,7 @@ Then the content of taxa.txt (the search is case sensitive):
 
 # Activate Nextflow module
 
+	module load jdk/1.20
 	module load nextflow/23.10
 
 If you want Nextflow to load automatically when you login, also run `module save`
@@ -34,9 +35,14 @@ From your run directory:
 
 When the pipeline finished, your tree file and all intermediate files will be in the `output` folder in your run directory.
 
-If the pipeline needs to be restarted, you can tell Nextflow to use the cached output files:
+If your terminal exits for any reason, the pipeline will stop. You can resume the pipeline with cached output files:
 
 	nextflow run -resume ../../main.nf
+
+To ensure your pipeline will not be stopped if your terminal exits, you can start a screen session and submit the Nextflow command to the Slurm cluster:
+
+	screen
+ 	srun --time=72:00:00 --mem=8G nextflow run ../../main.nf
 
 # More runs
 
