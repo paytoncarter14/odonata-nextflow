@@ -1,4 +1,3 @@
-/runs/*
 /.nextflow*
 /.ipynb*
 /prepare_data.nf
