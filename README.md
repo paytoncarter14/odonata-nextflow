@@ -20,7 +20,24 @@ Then the content of taxa.txt (the search is case sensitive):
 	Calopterygidae_Calopteryx
 	GEODE7884_Euphaeidae_Euphaea_guerini
 
-To use the pipeline with another taxa sampling, simply create another run folder and `taxa.txt` file.
+To use the pipeline with another taxa sampling, simply create another run folder and `taxa.txt` file:
+
+    odonata-nextflow
+    |-- 20kb_locus_list.txt
+    |-- README.md
+    |-- main.nf
+    |-- nextflow.config
+    `-- runs
+        |-- chlorocyphidae
+        |   |-- taxa.txt
+        |   `-- output
+        |       |-- tree.treefile
+        |       `-- ...
+        `-- another-run
+            |-- taxa.txt
+            `-- output
+                |-- tree.treefile
+                `-- ...
 
 # Activate Nextflow module
 
