@@ -1,6 +1,8 @@
 taxa_sql = "${launchDir}/taxa.sql"
+params.taxa_txt = "${launchDir}/taxa.txt"
+
 filtered_ortholog_dir = '/nobackup/scratch/grp/grp_geode/filtered_orthologs'
-locus_list_20kb = '/nobackup/scratch/grp/grp_geode/payton/nextflow/20kb_locus_list.txt'
+locus_list_20kb = "${projectDir}/20kb_locus_list.txt"
 
 process sql_to_sample_ids {
     output: path('taxa_sample_ids.txt')
@@ -18,7 +20,7 @@ process make_locus_list {
 process select_taxa_from_filtered_orthologs {
     input:
         path('taxa_sample_ids.txt')
-        val(locus)
+        each(locus)
     output: path('L*.fasta')
 
     cpus 1
@@ -110,14 +112,15 @@ process iqtree_tree_search {
 }
 
 workflow {
-    sql_to_sample_ids_c = sql_to_sample_ids()
+    // sql_to_sample_ids_c = sql_to_sample_ids()
     make_locus_list_c = Channel.fromPath(locus_list_20kb).splitText().map{it -> it.trim()}
-    select_taxa_from_filtered_orthologs_c = select_taxa_from_filtered_orthologs(sql_to_sample_ids_c, make_locus_list_c)
+    // select_taxa_from_filtered_orthologs_c = select_taxa_from_filtered_orthologs(sql_to_sample_ids_c, make_locus_list_c)
+    select_taxa_from_filtered_orthologs_c = select_taxa_from_filtered_orthologs(Channel.fromPath(params.taxa_txt), make_locus_list_c)
     mafft_alignment_c = mafft_alignment(select_taxa_from_filtered_orthologs_c)
     aliscore_c = aliscore(mafft_alignment_c)
     alicut_c = alicut(aliscore_c)
     fasconcat_c = fasconcat(alicut_c.map{it[0]}.collect())
-    //fasconcat_c = fasconcat(mafft_alignment_c.collect())
+    // fasconcat_c = fasconcat(mafft_alignment_c.collect())
     iqtree_model_selection_c = iqtree_model_selection(fasconcat_c)
     iqtree_tree_search_c = iqtree_tree_search(iqtree_model_selection_c)
     

@@ -1,5 +1,5 @@
-/bin
-/runs
+/runs/*
 /.nextflow*
 /.ipynb*
-/assembly
+/geode.db
+/prepare_data.nf
