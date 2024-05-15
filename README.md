@@ -9,7 +9,7 @@ This is currently only working with the 20kb probe sequences.
 
 # Create run directory and taxa.txt file
 
-Create an empty folder in the `runs` directory, then create a `taxa.txt	` file with the identifiers that will be searched in the locus files. For example, we'll make a run named `chlorocyphidae` that will include all of the family Chlorocyphidae, all of the genus _Calopteryx_, and the single sample `GEODE7884_Euphaeidae_Euphaea_guerini`:
+Create an empty folder in the `runs` directory, then create a `taxa.txt` file with the identifiers that will be searched in the locus files. For example, we'll make a run named `chlorocyphidae` that will include all of the family Chlorocyphidae, all of the genus _Calopteryx_, and the single sample `GEODE7884_Euphaeidae_Euphaea_guerini`:
 
 	mkdir runs/chlorocyphidae && cd $_
 	nano taxa.txt
